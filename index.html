@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maison Atelier — Architecture &amp; Interior Design</title>
+<meta name="description" content="Maison Atelier is a fictional luxury architecture and interior design studio. Spaces that speak without words.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23292824'/%3E%3Cpath d='M9 24V14a7 7 0 0114 0v10' fill='none' stroke='%23F7F5F0' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F5F0; --text:#292824; --muted:#6b675f; --accent:#A99B89; --accent-deep:#857765; --line:#DDD9D0; --tint:#EFEBE3;
+  --serif:"Cormorant Garamond","Cormorant",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --pad:clamp(20px,5vw,72px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.9rem,8.2vw,6.6rem)}
+h1 em,h2 em{font-style:italic;color:var(--accent-deep)}
+h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
+h3{font-size:clamp(1.5rem,2.4vw,2rem)}
+p{margin:0 0 1.2em;color:var(--muted)}
+.label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:28px}
+.wrap{padding:0 var(--pad);max-width:1480px;margin:0 auto}
+section{padding:clamp(72px,11vw,160px) 0}
+:focus-visible{outline:2px solid var(--text);outline-offset:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--text);color:var(--bg);padding:10px 16px;z-index:100}
+.skip:focus{left:8px}
+
+/* links & buttons */
+.link{display:inline-flex;align-items:center;gap:12px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding-bottom:8px;border-bottom:1px solid var(--text);transition:gap .3s,color .3s}
+.link:hover{gap:20px;color:var(--accent-deep)}
+.btn{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border:1px solid var(--text);padding:15px 30px;transition:background .3s,color .3s}
+.btn:hover{background:var(--text);color:var(--bg)}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(247,245,240,.96);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{font-size:.85rem;letter-spacing:.3em;text-decoration:none;font-weight:500}
+.brand span{color:var(--accent-deep)}
+.menu{display:none;list-style:none;margin:0;padding:0}
+.menu a{text-decoration:none;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid transparent;transition:border-color .3s}
+.menu a:hover{border-color:var(--text)}
+.nav-cta{display:none}
+.toggle{background:none;border:0;color:var(--text);font:inherit;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;padding:12px 0}
+.menu.open{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);padding:12px var(--pad) 24px;gap:4px}
+.menu.open a{display:block;padding:12px 0}
+
+/* placeholder imagery (replaced automatically by photos in /img) */
+.ph{position:relative;overflow:hidden;background:linear-gradient(160deg,#e4dccf,#cbbfae)}
+.ph::before{content:"";position:absolute;left:50%;bottom:0;width:38%;height:62%;transform:translateX(-50%);border-radius:999px 999px 0 0;background:linear-gradient(#f2eee6,#d9d0c1);box-shadow:0 0 0 clamp(8px,1.6vw,18px) rgba(247,245,240,.35)}
+.ph::after{content:attr(data-label);position:absolute;left:16px;bottom:14px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(41,40,36,.55)}
+.ph.b{background:linear-gradient(200deg,#d8d4c7,#b7b0a0)}
+.ph.b::before{width:46%;height:48%;border-radius:2px;left:30%;transform:none;bottom:18%;box-shadow:none;background:linear-gradient(#ebe6dc,#cfc7b8)}
+.ph.c{background:linear-gradient(170deg,#ddd0bf,#a99b89)}
+.ph.c::before{width:30%;height:70%;border-radius:999px 999px 0 0}
+.ph.d{background:linear-gradient(150deg,#e9e3d8,#c8bba8)}
+.ph.d::before{width:55%;height:40%;border-radius:2px;left:22%;transform:none;bottom:0;box-shadow:none;background:#f4f0e8}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+
+/* hero */
+.hero{padding:clamp(48px,8vw,110px) 0 0}
+.hero-top{display:grid;gap:36px;margin-bottom:clamp(40px,7vw,90px)}
+.hero-side p{max-width:30em}
+.hero-img{aspect-ratio:4/3;width:100%}
+
+/* projects */
+.head{display:flex;flex-direction:column;gap:20px;margin-bottom:clamp(40px,6vw,80px)}
+.projects{display:grid;gap:clamp(40px,6vw,64px)}
+figure{margin:0}
+figcaption{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);margin-top:16px;padding-top:14px;font-size:.88rem}
+figcaption b{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.2;display:block}
+figcaption span{color:var(--muted);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding-top:6px}
+.p1 .ph{aspect-ratio:4/5} .p2 .ph{aspect-ratio:3/2} .p3 .ph{aspect-ratio:1/1}
+
+/* studio */
+#studio{background:var(--tint)}
+.studio{display:grid;gap:44px;align-items:center}
+.studio .ph{aspect-ratio:4/5}
+.studio h2{margin-bottom:28px}
+.studio p{max-width:32em}
+.studio .link{margin-top:14px}
+
+/* services */
+.svc{display:grid;gap:10px;padding:34px 0;border-top:1px solid var(--line)}
+.svc:last-child{border-bottom:1px solid var(--line)}
+.svc small{font-size:.72rem;letter-spacing:.2em;color:var(--accent-deep)}
+.svc p{margin:0;max-width:30em}
+
+/* contact */
+#contact{text-align:center;border-top:1px solid var(--line)}
+#contact h2{max-width:12em;margin:0 auto 28px}
+#contact p{max-width:30em;margin:0 auto 40px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:56px 0 40px}
+.foot{display:grid;gap:36px}
+.foot h3{font-family:var(--sans);font-size:.85rem;letter-spacing:.3em;font-weight:500;margin-bottom:6px}
+.foot ul{list-style:none;margin:0;padding:0;font-size:.9rem}
+.foot li{margin-bottom:6px;color:var(--muted)}
+.foot a{text-decoration:none;color:var(--text);border-bottom:1px solid var(--line)}
+.foot a:hover{border-color:var(--text)}
+.copy{margin-top:48px;font-size:.78rem;color:var(--muted)}
+
+@media (min-width:860px){
+  .toggle{display:none}
+  .menu{display:flex;gap:40px}
+  .nav-cta{display:inline-block;padding:11px 24px}
+  .hero-top{grid-template-columns:1.6fr 1fr;align-items:end;gap:80px}
+  .hero-img{aspect-ratio:16/8}
+  .projects{grid-template-columns:repeat(12,1fr);align-items:start}
+  .p1{grid-column:1/6} .p2{grid-column:6/13;margin-top:18%} .p3{grid-column:3/8;margin-top:-4%}
+  .studio{grid-template-columns:1fr 1fr;gap:clamp(60px,8vw,130px)}
+  .svc{grid-template-columns:90px 1fr 1fr;align-items:baseline;gap:30px}
+  .foot{grid-template-columns:1.4fr 1fr 1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="Maison Atelier, home">MAISON <span>ATELIER</span></a>
+    <nav aria-label="Main">
+      <ul class="menu" id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li class="mobile-only"><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn nav-cta" href="#contact">Contact</a>
+    <button class="toggle" id="toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="home" style="padding-bottom:0">
+    <div class="wrap">
+      <span class="label">Architecture · Interiors · Objects</span>
+      <div class="hero-top">
+        <h1>Spaces That Speak <em>Without Words.</em></h1>
+        <div class="hero-side">
+          <p>We create thoughtful architecture and interiors shaped by material, light, and the people who inhabit them.</p>
+          <a class="link" href="#projects">Explore Projects <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="ph hero-img" data-label="Hero photograph" role="img" aria-label="Placeholder for an architectural interior photograph">
+        <img src="img/hero.jpg" alt="Sunlit interior with a curved stone archway" onerror="this.remove()">
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="head">
+        <span class="label" style="margin:0">Selected Projects</span>
+        <h2>A sense of <em>place.</em></h2>
+      </div>
+      <div class="projects">
+        <figure class="p1">
+          <div class="ph b" data-label="Project 01" role="img" aria-label="Placeholder image for The Stone House"><img src="img/project-1.jpg" alt="The Stone House, a contemporary residence" onerror="this.remove()"></div>
+          <figcaption><div><b>The Stone House</b>Contemporary residence</div><span>Algarve</span></figcaption>
+        </figure>
+        <figure class="p2">
+          <div class="ph c" data-label="Project 02" role="img" aria-label="Placeholder image for Rue Verneuil Apartment"><img src="img/project-2.jpg" alt="Rue Verneuil Apartment, a luxury apartment" onerror="this.remove()"></div>
+          <figcaption><div><b>Rue Verneuil Apartment</b>Luxury apartment</div><span>Paris</span></figcaption>
+        </figure>
+        <figure class="p3">
+          <div class="ph d" data-label="Project 03" role="img" aria-label="Placeholder image for Hôtel Sable"><img src="img/project-3.jpg" alt="Hôtel Sable, a boutique hospitality space" onerror="this.remove()"></div>
+          <figcaption><div><b>Hôtel Sable</b>Boutique hospitality</div><span>Mallorca</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="studio">
+    <div class="wrap studio">
+      <div class="ph" data-label="Studio photograph" role="img" aria-label="Placeholder for a photograph of a sculptural staircase">
+        <img src="img/studio.jpg" alt="Sculptural curved staircase in warm light" onerror="this.remove()">
+      </div>
+      <div>
+        <span class="label">The Studio</span>
+        <h2>Architecture Rooted in <em>Intention.</em></h2>
+        <p>Maison Atelier is a fictional studio of architects and designers who believe the finest spaces are quiet. We work slowly, with a small number of clients, shaping every threshold, surface and shadow with care.</p>
+        <p>Each commission begins with listening, and ends with a home or hotel that feels as though it has always belonged.</p>
+        <a class="link" href="#services">Discover Our Studio <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <span class="label" style="margin:0">Services</span>
+        <h2>From vision to <em>everyday life.</em></h2>
+      </div>
+      <div>
+        <article class="svc"><small>01</small><h3>Architecture &amp; Planning</h3><p>Concept design, planning and construction oversight for private residences and boutique buildings.</p></article>
+        <article class="svc"><small>02</small><h3>Interior Design</h3><p>Considered interiors, from materials and lighting to bespoke furniture and the final styling.</p></article>
+        <article class="svc"><small>03</small><h3>Spatial Consultation</h3><p>Focused advice on layout, light and proportion for homes and spaces already in progress.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <span class="label">Contact</span>
+      <h2>Let’s Create Something <em>Meaningful.</em></h2>
+      <p>Tell us about your project, your site and your timeline. We read every inquiry personally.</p>
+      <!-- Replace the address below with your real email -->
+      <a class="btn" href="mailto:studio@maisonatelier.example?subject=Project%20inquiry">Start an Inquiry</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><h3>MAISON ATELIER</h3><small style="color:var(--muted)">Architecture &amp; Interior Design</small></div>
+      <div><span class="label" style="margin-bottom:10px">Studio</span><ul><li>City, Country (placeholder)</li></ul></div>
+      <div><span class="label" style="margin-bottom:10px">Email</span><ul><li><a href="mailto:studio@maisonatelier.example">studio@maisonatelier.example</a></li></ul></div>
+      <div><span class="label" style="margin-bottom:10px">Follow</span><ul><li><a href="#" id="ig">Instagram (placeholder)</a></li></ul></div>
+    </div>
+    <p class="copy">© <span id="year">2026</span> Maison Atelier. A fictional studio for demonstration purposes.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var t=document.getElementById('toggle'),m=document.getElementById('menu');
+  function set(o){m.classList.toggle('open',o);t.setAttribute('aria-expanded',String(o));t.textContent=o?'Close':'Menu';}
+  t.addEventListener('click',function(){set(!m.classList.contains('open'));});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A')set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+  document.getElementById('year').textContent=new Date().getFullYear();
+  document.getElementById('ig').addEventListener('click',function(e){e.preventDefault();});
+  // "Contact" inside the mobile menu only
+  var mo=document.querySelector('.mobile-only');
+  function fit(){mo.style.display=window.innerWidth>=860?'none':'';}
+  fit();window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>
